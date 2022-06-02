@@ -1,0 +1,22 @@
+[
+    {
+        "name": "",
+        "type":{
+
+        },
+        "adress":{
+            "street": "",
+            "number": "",
+            "postal_code": "",
+            "city": ""
+        },
+        "contact": {
+            "mail": "",
+            "tel": ""
+        },
+        "brands": ["fiat", "alfa", "abarth", "jeep", "brute"]
+    },
+    {
+
+    }
+]
