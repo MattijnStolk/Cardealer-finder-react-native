@@ -1,7 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import react, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, Platform } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -10,9 +8,9 @@ import Map from './Map.js';
 
 
 export default function App() {
+  const [markers, setMarkers] = useState([]);
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
-  const [markers, setMarkers] = useState(null);
   const [data, setData] = useState(null)
 
   useEffect(() => {
@@ -24,7 +22,10 @@ export default function App() {
       }
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
+      
       getData()
+
+
       console.log(location)
     })();
   }, []);
@@ -34,32 +35,22 @@ export default function App() {
   function getData(){
     fetch(`https://stud.hosted.hr.nl/0986087/carstuff/autodealers.json`)
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {setData(data); initMarkers(data)})
     .catch(err => console.log(err))
   }
-  
 
-
-
-  // function Map(){
-  //   return(
-  //     <View style={styles.container}> 
-  //     <MapView 
-  //     style={styles.map} 
-  //     initialRegion={{
-  //       latitude: location.coords.latitude,
-  //       longitude: location.coords.longitude,
-  //       latitudeDelta: 0.0922,
-  //       longitudeDelta: 0.0421
-  //     }}
-  //     showsUserLocation={true}
-  //     //showsMyLocationButton={true} 
-  //     >
-  //       {/* <Marker coordinate={{latitude: markers.data[0].latitude, longitude: markers.data[0].longitude}}/> */}
-  //     </MapView>
-  //     </View>
-  //   )
-  // }
+  function initMarkers(data){
+    for (const single of data) {
+      setMarkers(current => [...current, {
+        title: single.name,
+        coordinates : {
+          longitude: (1*single.adress.lon),
+          latitude: (1*single.adress.lat)
+        },
+        description: single.brands.join(', ')
+      }])
+    }
+  }
 
 
 const Tab = createBottomTabNavigator();
@@ -67,11 +58,11 @@ const Tab = createBottomTabNavigator();
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name="Home" >
-          { (props) => <Home {...props} /> }
+          { (props) => <Home {...props} markers={markers}/> }
         </Tab.Screen> 
 
         <Tab.Screen name="Map">
-          { (props) => <Map {...props} location={location}/>}
+          { (props) => <Map {...props} location={location} data={data} markers={markers}/>}
         </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>

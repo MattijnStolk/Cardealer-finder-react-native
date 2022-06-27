@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View, Dimensions, Platform } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native';
 
-export default function Home(){
+export default function Home({ markers }){
     //lijst met autodealers/merken
     //als je op een van deze merken klikt wordt dit een 'filter' voor de map
     return(
