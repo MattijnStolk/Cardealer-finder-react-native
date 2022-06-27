@@ -5,6 +5,8 @@ import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Home from './Home.js';
+import Map from './Map.js';
 
 
 export default function App() {
@@ -24,8 +26,6 @@ export default function App() {
       setLocation(location);
       getData()
       console.log(location)
-      //toCoordinates('96 Meent 3011 JP Rotterdam')
-      //console.log(markers.data[0].longitude)
     })();
   }, []);
 
@@ -34,55 +34,45 @@ export default function App() {
   function getData(){
     fetch(`https://stud.hosted.hr.nl/0986087/carstuff/autodealers.json`)
     .then(res => res.json())
-    .then(data => setData(data))
+    .then(data => console.log(data))
     .catch(err => console.log(err))
   }
+  
 
-  //368e7f16fb9dfb925ece44370674ab2c
-  function toCoordinates(adress){
-    fetch(`http://api.positionstack.com/v1/forward?access_key=368e7f16fb9dfb925ece44370674ab2c&query=${adress}&output=json&country=NL&limit=1`)
-    .then(res => res.json())
-    .then(data => setMarkers(data))
-    .catch(err => console.log(err))
-  }
 
-  function ShowHome(){
-    //lijst met autodealers/merken
-    //als je op een van deze merken klikt wordt dit een 'filter' voor de map
-    return(
-      <View>
-        <Text>Hello</Text>
-      </View>
-    )
-  }
 
-  function ShowMap(){
-    return(
-      <View style={styles.container}> 
-      <MapView 
-      style={styles.map} 
-      initialRegion={{
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421
-      }}
-      showsUserLocation={true}
-      //showsMyLocationButton={true} 
-      >
-        {/* <Marker coordinate={{latitude: markers.data[0].latitude, longitude: markers.data[0].longitude}}/> */}
-      </MapView>
-      </View>
-    )
-  }
+  // function Map(){
+  //   return(
+  //     <View style={styles.container}> 
+  //     <MapView 
+  //     style={styles.map} 
+  //     initialRegion={{
+  //       latitude: location.coords.latitude,
+  //       longitude: location.coords.longitude,
+  //       latitudeDelta: 0.0922,
+  //       longitudeDelta: 0.0421
+  //     }}
+  //     showsUserLocation={true}
+  //     //showsMyLocationButton={true} 
+  //     >
+  //       {/* <Marker coordinate={{latitude: markers.data[0].latitude, longitude: markers.data[0].longitude}}/> */}
+  //     </MapView>
+  //     </View>
+  //   )
+  // }
 
 
 const Tab = createBottomTabNavigator();
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={ShowHome} />
-        <Tab.Screen name="Map" component={ShowMap} />
+        <Tab.Screen name="Home" >
+          { (props) => <Home {...props} /> }
+        </Tab.Screen> 
+
+        <Tab.Screen name="Map">
+          { (props) => <Map {...props} location={location}/>}
+        </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -95,9 +85,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  map: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-  },
-});
+  }
+})

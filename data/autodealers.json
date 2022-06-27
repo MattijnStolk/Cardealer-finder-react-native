@@ -2,70 +2,56 @@
     {
         "name": "Polestar Rotterdam",
         "adress":{
-            "street": "Meent",
-            "number": "92",
-            "postal_code": "3011 JP",
-            "city": "Rotterdam"
+            "lat": "51.921860",
+            "lon": "4.482100"
         },
         "brands": ["polestar"]
     },
     {
         "name": "Stern Ford",
         "adress":{
-            "street": "Laagjes",
-            "number": "4",
-            "postal_code": "3076 BJ",
-            "city": "Rotterdam"
+            "lat": "51.884390",
+            "lon": "4.523420"
         },
         "brands": ["Ford"]
     },
     {
         "name": "Auto Hoogenboom",
         "adress":{
-            "street": "Zuiderparkweg",
-            "number": "612",
-            "postal_code": "3084 CD",
-            "city": "Rotterdam"
+            "lat": "51.864210",
+            "lon": "4.475710"
         },
         "brands": ["Seat", "Skoda"]
     },
     {
         "name": "Volvo Studio Rotterdam",
         "adress":{
-            "street": "Meent",
-            "number": "96",
-            "postal_code": "3011 JR",
-            "city": "Rotterdam"
+            "lat": "51.921810",
+            "lon": "4.481960"
         },
         "brands": ["Volvo"]
     },
     {
         "name": "Renault Rotterdam-Zuid Van Mossel",
         "adress":{
-            "street": "Charl. Lagedijk",
-            "number": "946",
-            "postal_code": "3088 LA",
-            "city": "Rotterdam"
+            "lat": "51.869140",
+            "lon": "4.453760"
         },
         "brands": ["Renault"]
     },
     {
         "name": "RAC B.V.",
         "adress":{
-            "street": "Autolettestraat",
-            "number": "10",
-            "postal_code": "3036 NP",
-            "city": "Rotterdam"
+            "lat": "51.909946",
+            "lon": "4.5369578"
         },
         "brands": ["Jaguar", "Range Rover"]
     },
     {
         "name": "Van Mossel",
         "adress":{
-            "street": "Koperstraat",
-            "number": "18",
-            "postal_code": "3067 GL",
-            "city": "Rotterdam"
+            "lat": "51.94972610473633",
+            "lon": "4.54870080947876"
         },
         "brands": ["MG"]
     }
