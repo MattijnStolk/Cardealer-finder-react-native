@@ -1,10 +1,10 @@
 ## eindopdracht eisen
 
 - ~~maps moet werken~~
-- hotspots moeten zichtbaar zijn, zowel op de ~~map~~ als in een lijst.
-    - als je op de lijst klikt, moet deze naar de map gaan. 
+- ~~hotspots moeten zichtbaar zijn, zowel op de map als in een lijst.~~
+    - ~~als je op de lijst klikt, moet deze naar de map gaan.~~ 
 - er moet dark mode en light mode in zitten
-- gebruikers moeten info op kunnen slaan bij hotspots, in localstorage.
+- gebruikers moeten info op kunnen slaan bij hotspots, in asyncstorage.
 - localstorage moet ook zichtbaar zijn in een lijst. -> ook offline. hoeft niet op de kaart. 
 
 ### eisen uit de handleiding:

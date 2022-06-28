@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './Home.js';
 import Map from './Map.js';
+import List from './List.js'
 
 
 export default function App() {
@@ -22,10 +23,8 @@ export default function App() {
       }
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
-      
       getData()
-
-
+      
       console.log(location)
     })();
   }, []);
@@ -43,7 +42,7 @@ export default function App() {
     for (const single of data) {
       setMarkers(current => [...current, {
         title: single.name,
-        coordinates : {
+        coords : {
           longitude: (1*single.adress.lon),
           latitude: (1*single.adress.lat)
         },
@@ -62,7 +61,11 @@ const Tab = createBottomTabNavigator();
         </Tab.Screen> 
 
         <Tab.Screen name="Map">
-          { (props) => <Map {...props} location={location} data={data} markers={markers}/>}
+          { (props) => <Map {...props} location={location} markers={markers}/>}
+        </Tab.Screen>
+
+        <Tab.Screen name="List">
+          { (props) => <List {...props} markers={markers}/>}
         </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
