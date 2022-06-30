@@ -75,9 +75,9 @@ const Tab = createBottomTabNavigator();
           { (props) => <List {...props} markers={markers}/>}
         </Tab.Screen>
 
-        { <Tab.Screen name='Settings'>
+        <Tab.Screen name='Settings'>
           { (props) => <Settings {...props} theme={theme} setTheme={setTheme}/>}
-        </Tab.Screen> }
+        </Tab.Screen>
 
       </Tab.Navigator>
     </NavigationContainer>
