@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
-import { StyleSheet, Text, View, Dimensions, FlatList, SafeAreaView, StatusBar, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text , FlatList, SafeAreaView, StatusBar, TouchableOpacity } from 'react-native';
 
 export default function Home({ markers, navigation }) {
+//rendering the flatlist
   const renderItem = ({ item }) => (
     <TouchableOpacity onPress={() => navigation.navigate('Map', { currentMarker: item })} style={styles.item}>
-      <Text style={styles.title}>{item.title}</Text>
+      <Text style={styles.title}>{item.title + '\n' + item.description}</Text>
     </TouchableOpacity>
   );
 
@@ -14,7 +14,6 @@ export default function Home({ markers, navigation }) {
       <FlatList
         data={markers}
         renderItem={renderItem}
-      //keyExtractor={item => item.id}
       />
     </SafeAreaView>
   )

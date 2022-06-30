@@ -1,11 +1,12 @@
-import { LocationEventEmitter } from 'expo-location/build/LocationEventEmitter.js';
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Dimensions, LogBox, } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, View, Dimensions, } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
 export default function Map({ location, markers, route } ) {
+  //create map reference
   const mapView = React.createRef();
 
+  //if a parameter changes, change the region of the map
   useEffect(()=> {
     if (route.params) {
       console.log(route.params)
@@ -19,29 +20,17 @@ export default function Map({ location, markers, route } ) {
       changeRegion(location)
     }
   
-    function changeRegion(loc){
-      const targetLatitude = loc.coords.latitude
-      const targetLongitude = loc.coords.longitude
-      mapView.current.animateToRegion({
-        latitude: targetLatitude,
-        longitude: targetLongitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421
-      }, 1000)
-    }
-  
-    console.log("in map")
-    //console.log(location)
-  })
-  
+  }, [route.params?.currentMarker])
 
-  
-  //console.log(data)
-
-  // useEffect(() => {
-    
-  // }, [])
-
+  //change region in the map
+  function changeRegion(loc){
+    mapView.current.animateToRegion({
+      latitude: loc.coords.latitude,
+      longitude: loc.coords.longitude,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421
+    }, 1000)
+  }
 
   return (
     <View style={styles.container}>
@@ -60,7 +49,12 @@ export default function Map({ location, markers, route } ) {
         showsTraffic={true}
       >
         {markers.map(marker => (
-          <Marker key={marker.title} coordinate={marker.coords} title={marker.title} description={marker.description}/>
+          <Marker 
+            key={marker.title} 
+            coordinate={marker.coords} 
+            title={marker.title} 
+            description={marker.description}
+          />
         ))}
       </MapView>
     </View>

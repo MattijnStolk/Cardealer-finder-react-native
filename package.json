@@ -10,6 +10,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "~1.17.3",
     "@react-navigation/bottom-tabs": "^6.3.1",
     "expo": "~45.0.0",
     "expo-location": "~14.2.2",
@@ -17,8 +18,10 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.68.2",
+    "react-native-dropdown-picker": "^5.4.2",
     "react-native-maps": "0.30.2",
-    "react-native-web": "0.17.7"
+    "react-native-web": "0.17.7",
+    "expo-updates": "~0.13.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
