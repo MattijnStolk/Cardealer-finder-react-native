@@ -33,8 +33,6 @@ export default function Settings( {theme, setTheme}) {
     )
 }
 
-
-
 const styles = StyleSheet.create({
     container: {
       flex: 1,
