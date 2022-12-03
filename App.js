@@ -10,7 +10,7 @@ import Settings from './src/Settings.js'
 
 
 export default function App() {
-  //Variables
+  //Globals
   const [markers, setMarkers] = useState([]);
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -32,7 +32,7 @@ export default function App() {
     })();
   }, []);
 
-  if (errorMsg) { alert(errorMsg)}
+  if (errorMsg) { alert(errorMsg) }
 
   //fetch data from API
   function getData(){
