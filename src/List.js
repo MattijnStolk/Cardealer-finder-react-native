@@ -1,7 +1,7 @@
 import { StyleSheet, Text , FlatList, SafeAreaView, StatusBar, TouchableOpacity } from 'react-native';
 
 export default function Home({ markers, navigation }) {
-//rendering the flatlist
+  //rendering the flatlist. On press, go to map with that marker.
   const renderItem = ({ item }) => (
     <TouchableOpacity onPress={() => navigation.navigate('Map', { currentMarker: item })} style={styles.item}>
       <Text style={styles.title}>{item.title + '\n' + item.description}</Text>
