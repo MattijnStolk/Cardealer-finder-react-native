@@ -26,10 +26,9 @@ export default function App() {
         return;
       }
       let location = await Location.getCurrentPositionAsync({});
+      
       setLocation(location);
       getData()
-
-      console.log(location)
     })();
   }, []);
 
